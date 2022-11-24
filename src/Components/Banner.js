@@ -28,7 +28,7 @@ const Banner = () => {
                 }}
                 mb="23px" mt="30px" 
             >
-                Don't give up <br/> and keep going!
+                Don't give up <br/> keep going!
             </Typography>
             <Typography fontSize="22px" lineHeight="35px"
             mb={4}>
