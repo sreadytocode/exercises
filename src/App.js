@@ -1,10 +1,11 @@
 import React from "react";
 import './App.css';
+import GymContainer from "./Containers/Gym_Container";
 
 function App() {
   return (
-    <div className="App">
-      
+    <div>
+        <GymContainer/>
     </div>
   );
 }
