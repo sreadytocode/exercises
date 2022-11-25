@@ -1,6 +1,6 @@
 import React from "react";
 import { Stack, Typography } from "@mui/material";
-import Icon from "../images/cat-weight.png";
+import Icon from "../images/gym.png";
 
 const BodyPart = ({item, setBodyPart, bodyPart}) => {
     return ( 

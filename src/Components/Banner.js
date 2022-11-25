@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Stack, Typography, Button } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import WeightsImage from "../images/weights.jpeg";
+import './Banner.css'
 
 const theme = createTheme({
     palette: {

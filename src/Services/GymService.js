@@ -1,3 +1,4 @@
+import {rapidApiKey} from "../Services/config";
 
 export const exerciseOptions = {
         method: 'GET',
