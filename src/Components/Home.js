@@ -14,7 +14,7 @@ const Home = () => {
             <SearchBar setExercises={setExercises}
             bodyPart={bodyPart} setBodyPart={setBodyPart}/>
             <Exercises setExercises={setExercises}
-            bodyPart={bodyPart} setBodyPart={setBodyPart}/>
+            bodyPart={bodyPart} exercises={exercises}/>
         </Box>
      );
 }
