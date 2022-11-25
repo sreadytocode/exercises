@@ -3,9 +3,8 @@ import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import { exerciseOptions, fetchData } from "../Services/GymService";
 import ScrollBar from "./ScrollBar.js";
 
-const SearchBar = () => {
+const SearchBar = ({setExercises, bodyPart, setBodyPart}) => {
     const [search, setSearch] = useState('');
-    const [exercises, setExercises] = useState([]);
     const [bodyParts, setBodyParts] = useState([]);
 
     useEffect(() => {
@@ -22,16 +21,16 @@ const SearchBar = () => {
         if (search) {
             const exerciseData = await fetchData
             ('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
-            console.log(exerciseData);
-            // const searchedExercises = exerciseData.filter(
-            //     (exercise) => exercise.name.toLowerCase().includes(search)
-            //     || exercise.target.toLowerCase().includes(search)
-            //     || exercise.equipment.toLowerCase().includes(search)
-            //     || exercise.bodyPart.toLowerCase().includes(search)
-            // );
+ 
+            const searchedExercises = exerciseData.filter(
+                (exercise) => exercise.name.toLowerCase().includes(search)
+                || exercise.target.toLowerCase().includes(search)
+                || exercise.equipment.toLowerCase().includes(search)
+                || exercise.bodyPart.toLowerCase().includes(search)
+            );
 
-            // setSearch('');
-            // setExercises(searchedExercises);
+            setSearch('');
+            setExercises(searchedExercises);
         }
     };
 
@@ -80,7 +79,7 @@ const SearchBar = () => {
                     </Button>
                 </Box>
                 <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
-                        <ScrollBar data={bodyParts}/>
+                        <ScrollBar data={bodyParts} bodyPart={bodyPart} setBodyPart={setBodyPart}/>
                 </Box>
         </Stack>
      );

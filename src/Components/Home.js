@@ -5,11 +5,16 @@ import SearchBar from "./SearchBar.js";
 import Exercises from "./Exercises.js";
 
 const Home = () => {
+    const [exercises, setExercises] = useState([]);
+    const [bodyPart, setBodyPart] = useState('all');
+    
     return ( 
         <Box>
             <Banner/>
-            <SearchBar/>
-            <Exercises/>
+            <SearchBar setExercises={setExercises}
+            bodyPart={bodyPart} setBodyPart={setBodyPart}/>
+            <Exercises setExercises={setExercises}
+            bodyPart={bodyPart} setBodyPart={setBodyPart}/>
         </Box>
      );
 }
