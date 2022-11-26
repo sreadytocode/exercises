@@ -35,7 +35,7 @@ const ExerciseSelect = ({exerciseDetail}) => {
                 p: '20px',
                 alignItems: 'center',
             }}>
-                <img src={gifUrl} alt={name} Loading="lazy" className="detail-image"/>
+                <img src={gifUrl} alt={name} loading="lazy" className="detail-image"/>
                 <Stack 
                 sx={{gap: { lg: '35px', xs: '20px'}}}>
                     <Typography variant="h3" textTransform="capitalize">

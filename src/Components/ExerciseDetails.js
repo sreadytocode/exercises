@@ -10,6 +10,9 @@ import { exerciseOptions, fetchData, youtubeOptions } from "../Services/GymServi
 const ExerciseDetails = () => {
     const [exerciseDetail, setExerciseDetail] = useState({});
     const [exerciseVideo, setExerciseVideo] = useState([]);
+    const [exerciseTargetMuscles, setExerciseTargetMuscles] = useState([]);
+    const [equipmentExercises, setEquipmentExercises] = useState([]);
+
     const { id } = useParams();
 
     useEffect(() => {
@@ -23,6 +26,13 @@ const ExerciseDetails = () => {
         
           const exerciseVideosData = await fetchData(`${youtubeSearchUrls}/search?query=${exerciseDetailData.name} exercise`, youtubeOptions);
           setExerciseVideo(exerciseVideosData.contents);
+
+          const targetMuscleData = await fetchData(`${url}/exercises/target/${exerciseDetailData.target}`, exerciseOptions);
+          setExerciseTargetMuscles(targetMuscleData);
+        
+          const equipmentData = await fetchData(`${url}/exercises/equipment/${exerciseDetailData.equipment}`, exerciseOptions);
+          setEquipmentExercises(equipmentData);
+
         }
         fetchExercisesData();
     }, [id])
@@ -31,7 +41,7 @@ const ExerciseDetails = () => {
         <Box>
             <ExerciseSelect exerciseDetail={exerciseDetail}/>
             <Video videos={exerciseVideo} name={exerciseDetail.name}/>
-            <SimilarExercises/>
+            <SimilarExercises targetMuscle={exerciseTargetMuscles} equipmentExercises={equipmentExercises}/>
         </Box>
      );
 }
