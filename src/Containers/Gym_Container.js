@@ -12,7 +12,7 @@ const GymContainer = () => {
             <Router>
                 <NavBar/>
                     <Routes>
-                        <Route path="/" element={<Home />}/>
+                        <Route path="/gym_react_exercises" element={<Home />}/>
                         <Route path="/exercise/:id" element={<ExerciseDetails/>}/>
                     </Routes>
             </Router>
