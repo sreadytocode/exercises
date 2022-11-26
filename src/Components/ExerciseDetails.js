@@ -21,9 +21,8 @@ const ExerciseDetails = () => {
           (`${url}/exercises/exercise/${id}`, exerciseOptions);
           setExerciseDetail(exerciseDetailData)
         
-          const exerciseVideoData = await fetchData
-          (`${youtubeSearchUrls}/search?q=${exerciseDetailData.name}`, youtubeOptions);
-            setExerciseVideo(exerciseVideoData);
+          const exerciseVideosData = await fetchData(`${youtubeSearchUrls}/search?query=${exerciseDetailData.name} exercise`, youtubeOptions);
+          setExerciseVideo(exerciseVideosData.contents);
         }
         fetchExercisesData();
     }, [id])
@@ -31,7 +30,7 @@ const ExerciseDetails = () => {
     return ( 
         <Box>
             <ExerciseSelect exerciseDetail={exerciseDetail}/>
-            <Video video={exerciseVideo} name={exerciseDetail.name}/>
+            <Video videos={exerciseVideo} name={exerciseDetail.name}/>
             <SimilarExercises/>
         </Box>
      );
