@@ -1,9 +1,13 @@
 import React from "react";
 import { Typography, Stack, Button } from "@mui/material";
-
+import styled from "styled-components";
 import BodyPartImage from "../images/body-part.png";
 import TargetImage from "../images/target.png";
 import EquipmentImage from "../images/equipment.png";
+
+const Capitalise = styled.span`
+    text-transform: capitalize;
+`
 
 const ExerciseSelect = ({exerciseDetail}) => {
     const { bodyPart, gifUrl, name, target, equipment } = exerciseDetail;
@@ -29,16 +33,16 @@ const ExerciseSelect = ({exerciseDetail}) => {
             sx={{
                 flexDirection: { lg: 'row'},
                 p: '20px',
-                alignItems: 'center'
+                alignItems: 'center',
             }}>
                 <img src={gifUrl} alt={name} Loading="lazy" className="detail-image"/>
                 <Stack 
                 sx={{gap: { lg: '35px', xs: '20px'}}}>
-                    <Typography variant="h3">
+                    <Typography variant="h3" textTransform="capitalize">
                         {name}
                     </Typography>
-                    <Typography variant="h6">
-                        Prioritise your wellbeing by exercising. {name} {' '}
+                    <Typography variant="h6" >
+                        Prioritise your wellbeing by exercising. <Capitalise>{name}</Capitalise> {' '}
                         is fantastic to target your {target}. This is perfect to improve
                         your mental and physical wellbeing. So keep going and don't give up!
                     </Typography>
@@ -55,7 +59,7 @@ const ExerciseSelect = ({exerciseDetail}) => {
                                     height: '80px'
                                 }}/>
                             </Button>
-                            <Typography variant="h5">
+                            <Typography textTransform="capitalize" variant="h5">
                                 {item.name}
                             </Typography>
                         </Stack>

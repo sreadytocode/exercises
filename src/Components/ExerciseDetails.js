@@ -5,10 +5,11 @@ import ExerciseSelect from "../Components/ExerciseSelect.js";
 import Video from "./Video.js";
 import SimilarExercises from "./SimilarExercises.js";
 
-import { exerciseOptions, fetchData } from "../Services/GymService.js";
+import { exerciseOptions, fetchData, youtubeOptions } from "../Services/GymService.js";
 
 const ExerciseDetails = () => {
     const [exerciseDetail, setExerciseDetail] = useState({});
+    const [exerciseVideo, setExerciseVideo] = useState([]);
     const { id } = useParams();
 
     useEffect(() => {
@@ -16,8 +17,13 @@ const ExerciseDetails = () => {
           const url = 'https://exercisedb.p.rapidapi.com';
           const youtubeSearchUrls = 'https://youtube-search-and-download.p.rapidapi.com';   
 
-          const detailData = await fetchData(`${url}/exercises/exercise/${id}`, exerciseOptions);
-          setExerciseDetail(detailData)
+          const exerciseDetailData = await fetchData
+          (`${url}/exercises/exercise/${id}`, exerciseOptions);
+          setExerciseDetail(exerciseDetailData)
+        
+          const exerciseVideoData = await fetchData
+          (`${youtubeSearchUrls}/search?q=${exerciseDetailData.name}`, youtubeOptions);
+            setExerciseVideo(exerciseVideoData);
         }
         fetchExercisesData();
     }, [id])
@@ -25,7 +31,7 @@ const ExerciseDetails = () => {
     return ( 
         <Box>
             <ExerciseSelect exerciseDetail={exerciseDetail}/>
-            <Video/>
+            <Video video={exerciseVideo} name={exerciseDetail.name}/>
             <SimilarExercises/>
         </Box>
      );
