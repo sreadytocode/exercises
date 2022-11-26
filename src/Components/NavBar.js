@@ -42,7 +42,7 @@ const Navbar = () => (
         fontSize="24px"
         alignItems="flex-end"
       >
-        <StyledLink to="/exercises/">Home</StyledLink>
+        <StyledLink to="/exercises">Home</StyledLink>
         <Hyperlink href="#exercises">Exercises</Hyperlink>
       </Stack>
     </Stack>
