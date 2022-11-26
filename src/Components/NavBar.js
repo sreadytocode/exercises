@@ -32,7 +32,7 @@ const Navbar = () => (
         justifyContent: 'none' }} 
         px="20px"
     >
-        <Link to="/">
+        <Link to="/exercises/">
             <Image src={Logo} alt="logo"/>
         </Link>
       <Stack
@@ -42,7 +42,7 @@ const Navbar = () => (
         fontSize="24px"
         alignItems="flex-end"
       >
-        <StyledLink to="/">Home</StyledLink>
+        <StyledLink to="/exercises/">Home</StyledLink>
         <Hyperlink href="#exercises">Exercises</Hyperlink>
       </Stack>
     </Stack>
