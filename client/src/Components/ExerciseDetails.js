@@ -25,7 +25,7 @@ const ExerciseDetails = () => {
           .then( async (exercise) => {
             setExerciseDetail(exercise)
             
-            fetch(`http://localhost:9000/youtube/${exercise.name}/exercise`)
+            fetch(`http://localhost:9000/youtube/${exercise.name}`)
             .then((res) => res.json())
             .then( async (exerciseVideosData) => {
                 setExerciseVideo(exerciseVideosData.contents);

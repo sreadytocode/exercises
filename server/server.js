@@ -65,8 +65,8 @@ app.get('/bodyPart/:bodyPart', (req, res) => {
     .then((bodyPart) => res.send(bodyPart))
 })
 
-app.get(`/youtube/:name/exercise`, (req, res) => {
-    const url = `https://youtube-search-and-download.p.rapidapi.com/search?query=/${req.name}/exercise`
+app.get(`/youtube/:name`, (req, res) => {
+    const url = `https://youtube-search-and-download.p.rapidapi.com/search?query=/${req.params.name}/exercise`
     fetch(url, youtubeOptions)
     .then((info)=> info.json())
     .then((video) => res.send(video))
