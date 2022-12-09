@@ -5,7 +5,6 @@ import ExerciseSelect from "../Components/ExerciseSelect.js";
 import Video from "./Video.js";
 import SimilarExercises from "./SimilarExercises.js";
 
-import { exerciseOptions, youtubeOptions } from "../Services/GymService.js";
 
 const ExerciseDetails = () => {
     const [exerciseDetail, setExerciseDetail] = useState({});

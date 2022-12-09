@@ -20,8 +20,9 @@ const SearchBar = ({setExercises, bodyPart, setBodyPart}) => {
 
     const handleTheSearch = async () => {
         if (search) {
-            const exerciseData = await fetch
-            ('http://localhost:9000/exercises');
+            fetch('http://localhost:9000/exercises')
+            .then((res) => res.json())
+            .then(async (exerciseData) => {
  
             const searchedExercises = exerciseData.filter(
                 (exercise) => exercise.name.toLowerCase().includes(search)
@@ -32,6 +33,7 @@ const SearchBar = ({setExercises, bodyPart, setBodyPart}) => {
 
             setSearch('');
             setExercises(searchedExercises);
+            })
         }
     };
 
