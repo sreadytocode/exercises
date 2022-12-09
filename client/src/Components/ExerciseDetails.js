@@ -5,7 +5,7 @@ import ExerciseSelect from "../Components/ExerciseSelect.js";
 import Video from "./Video.js";
 import SimilarExercises from "./SimilarExercises.js";
 
-import { exerciseOptions, fetchData, youtubeOptions } from "../Services/GymService.js";
+import { exerciseOptions, youtubeOptions } from "../Services/GymService.js";
 
 const ExerciseDetails = () => {
     const [exerciseDetail, setExerciseDetail] = useState({});
@@ -17,21 +17,34 @@ const ExerciseDetails = () => {
 
     useEffect(() => {
         const fetchExercisesData = async () => {
-          const url = 'https://exercisedb.p.rapidapi.com';
-          const youtubeSearchUrls = 'https://youtube-search-and-download.p.rapidapi.com';   
+          const url = 'http://localhost:9000/exercises';
+         
 
-          const exerciseDetailData = await fetchData
-          (`${url}/exercises/exercise/${id}`, exerciseOptions);
-          setExerciseDetail(exerciseDetailData)
+          fetch(`http://localhost:9000/exercises/${id}`)
+          .then((res) => res.json())
+          .then( async (exercise) => {
+            setExerciseDetail(exercise)
+            
+            fetch(`http://localhost:9000/youtube/${exercise.name}/exercise`)
+            .then((res) => res.json())
+            .then( async (exerciseVideosData) => {
+                setExerciseVideo(exerciseVideosData);
+            });
+    
+            fetch(`${url}/target/${exercise.target}`)
+            .then((res) => res.json())
+            .then( async (targetMuscle) => {
+                setExerciseTargetMuscles(targetMuscle);
+            })
+            
+          
+            fetch(`${url}/equipment/${exercise.equipment}`)
+            .then((res) => res.json())
+            .then( async (equipmentData) => {
+                setEquipmentExercises(equipmentData);
+            })
+        });
         
-          const exerciseVideosData = await fetchData(`${youtubeSearchUrls}/search?query=${exerciseDetailData.name} exercise`, youtubeOptions);
-          setExerciseVideo(exerciseVideosData.contents);
-
-          const targetMuscleData = await fetchData(`${url}/exercises/target/${exerciseDetailData.target}`, exerciseOptions);
-          setExerciseTargetMuscles(targetMuscleData);
-        
-          const equipmentData = await fetchData(`${url}/exercises/equipment/${exerciseDetailData.equipment}`, exerciseOptions);
-          setEquipmentExercises(equipmentData);
 
         }
         fetchExercisesData();

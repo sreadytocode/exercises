@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 import Pagination from "@mui/material/Pagination";
 import { Box, Stack, Typography } from "@mui/material";
 import ExerciseCard from "./ExerciseCard";
-import { exerciseOptions, fetchData } from "../Services/GymService";
+
 
 const Exercises = ({ setExercises, exercises, bodyPart }) => {
     const [currentPage, setCurrentPage] = useState(1);
+
     
     const exercisesPerPage = 9;
     const indexOfPreviousExercise = currentPage * exercisesPerPage;
     const indexOfTheFirstExercise = indexOfPreviousExercise - exercisesPerPage;
     const currentExercises = exercises.slice(indexOfTheFirstExercise, indexOfPreviousExercise);
+
    
     const paginate = (e, value) => {
         setCurrentPage(value);
@@ -22,19 +24,20 @@ const Exercises = ({ setExercises, exercises, bodyPart }) => {
             let exercisesData = [];
 
             if (bodyPart === "all") {
-                exercisesData = await fetchData
-                ('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
+                exercisesData = await fetch
+                ('http://localhost:9000/exercises')
+                .then((res) => res.json())
             } else {
-                exercisesData = await fetchData
-                (`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, 
-                exerciseOptions);
+                exercisesData = await fetch
+                (`http://localhost:9000/bodyPart/${bodyPart}`)
+                .then((res) => res.json())
             }
             setExercises(exercisesData);
         }
 
         fetchExercisesData();
         
-    }, [bodyPart]);
+    }, [setExercises, bodyPart]);
 
     return ( 
         <Box id="exercises"

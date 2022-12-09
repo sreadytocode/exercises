@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/exercises/static/css/main.73f5ba94.css",
+    "main.js": "/exercises/static/js/main.5d887bee.js",
+    "static/js/787.7a4feac3.chunk.js": "/exercises/static/js/787.7a4feac3.chunk.js",
+    "static/media/weights.jpeg": "/exercises/static/media/weights.b646b7e57c9deff008d7.jpeg",
+    "static/media/target.png": "/exercises/static/media/target.f65edfde49a260643dc3.png",
+    "static/media/body-part.png": "/exercises/static/media/body-part.3c100dae61724d3117e6.png",
+    "static/media/logo.png": "/exercises/static/media/logo.b5c52f93804006cb660f.png",
+    "static/media/equipment.png": "/exercises/static/media/equipment.f1a529705e2c9d45e5a5.png",
+    "static/media/gym.png": "/exercises/static/media/gym.feb2ead24c60b62bae7c.png",
+    "index.html": "/exercises/index.html",
+    "main.73f5ba94.css.map": "/exercises/static/css/main.73f5ba94.css.map",
+    "main.5d887bee.js.map": "/exercises/static/js/main.5d887bee.js.map",
+    "787.7a4feac3.chunk.js.map": "/exercises/static/js/787.7a4feac3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.73f5ba94.css",
+    "static/js/main.5d887bee.js"
+  ]
+}
